@@ -11,29 +11,24 @@ export class BasePageValidator extends BaseValidator {
         this.page = page
     }
 
-    async verifyPlaceholder(inputArea: Locator, text: string): Promise<void> {
-        const placeholder = await inputArea.getAttribute('placeholder');
-        return this.testText(placeholder as string, text);
-    }
-
-    async verifyLabel(elem: Locator, text: string): Promise<void> {
-        return this.validate(elem, text, true);
+    async verifyLabel(elem: Locator, expectedText: string, errorMsg: string): Promise<void> {
+        return this.validate(elem, expectedText, true, errorMsg);
     }
     
-      async verifyInput(elem: Locator, text: string): Promise<void> {
-        return this.validate(elem, text, false);
+      async verifyInput(elem: Locator, expectedText: string, errorMsg: string): Promise<void> {
+        return this.validate(elem, expectedText, false, errorMsg);
     }
 
-    async validate(elem: Locator, text: string, byTextContent: boolean): Promise<void> {
-        let text1: string;
+    async validate(elem: Locator, expectedText: string, byTextContent: boolean, errorMsg: string): Promise<void> {
+        let actualText: string;
     
         if (byTextContent === false) {
-          await elem.fill(text);
-          text1 = (await elem.inputValue()) || '';
+          await elem.fill(expectedText);
+          actualText = (await elem.inputValue()) || '';
         } else {
-          text1 = (await elem.textContent()) || '';
+          actualText = (await elem.textContent()) || '';
         }
-        return this.testText(text1, text);
+        return this.assertTextEqual(actualText, expectedText, errorMsg);
     }  
 
 }
