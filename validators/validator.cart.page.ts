@@ -1,7 +1,7 @@
-import { type Page } from '@playwright/test';
-import { PageContainer } from '../pages/container.for.pages';
-import { BasePageValidator } from './base.page.validator';
- 
+import { PageContainer } from '../page-objects/page.container';
+import { BasePageValidator } from './base/base.page.validator';
+
+
 /**
  * The purpose of this class is to have a verifications to be wrapped by functions 
  * so on the test cases level code look cleaner
@@ -19,7 +19,7 @@ export class CartPageValidator extends BasePageValidator {
         throw new Error('Method not implemented.');
     }
 
-    validateProduct(productTitle: string | null, productDescription: string | null, productPrice: string | undefined) {
+    async validateProduct(productTitle?: string, productDescription?: string, productPrice?: string) {
         throw new Error('Method not implemented.');
     }
 

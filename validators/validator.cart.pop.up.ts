@@ -1,30 +1,32 @@
-import { type Page } from '@playwright/test';
-import { PageContainer } from '../pages/container.for.pages';
-import { BasePageValidator } from './base.page.validator';
+import { PageContainer } from '../page-objects/page.container';
+import { BasePageValidator } from './base/base.page.validator';
+import { CartPopUpComponent } from '../page-objects/components/cart.pop.up.component';
  
 /**
  * The purpose of this class is to have a verifications to be wrapped by functions 
  * so on the test cases level code look cleaner
  */
 export class CartPopUpValidator extends BasePageValidator {
-    validateProduct(productTitle: string | null, productDescription: string | null, productPrice: string | undefined) {
-      throw new Error('Method not implemented.');
+  
+  readonly pages: PageContainer;
+  readonly cartPopUp: CartPopUpComponent;
+  
+  constructor(pageContainer: PageContainer) {
+    super(pageContainer.page);
+    this.pages = pageContainer;
+    this.cartPopUp = pageContainer.homePage.cartPopUp;
+  }
+
+    async validateProduct(productTitle: string, productDescription: string, productPrice: string) {
+        await this.verifyLabel(this.cartPopUp.locators().itemTitle, productTitle, "Product title doesn't match");
+        await this.verifyLabel(this.cartPopUp.locators().itemDescription, productDescription, "Product description doesn't match");
+        
+        await this.verifyLabelContains(this.cartPopUp.locators().itemPrice, productPrice, "Product price doesn't match");
     }
    
-    readonly pages: PageContainer;
-
-    constructor(pageContainer: PageContainer) {
-        super(pageContainer.page);
-        this.pages = pageContainer;
-    }
 
     async verifyNumberOfItemsInTheBag(arg0: number) {
         throw new Error('Method not implemented.');
     }
-
-    checkPopUpVisible() {
-        throw new Error('Method not implemented.');
-      }
-
 
 }

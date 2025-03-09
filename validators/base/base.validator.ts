@@ -7,4 +7,8 @@ export class BaseValidator {
     expect(actual, msg).toEqual(expected);
   }
 
+  assertTextContains(actual: string, expected: string, msg: string): void {
+    expect(actual, msg).toContain(expected);
+  }
+
 }

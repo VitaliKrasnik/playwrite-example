@@ -1,6 +1,6 @@
 import { test as base, expect } from '@playwright/test';
-import { PageContainer } from '../pages/container.for.pages';
-import { ValidatorContainer } from '../validators/container.for.validators';
+import { PageContainer } from '../page-objects/page.container';
+import { ValidatorContainer } from '../validators/validators.container';
 
 type BaseFixtures = {
   pages: PageContainer;

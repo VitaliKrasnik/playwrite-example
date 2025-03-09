@@ -1,5 +1,5 @@
 import { Locator, type Page } from '@playwright/test';
-import { BaseValidator } from './base.validator.ts';
+import { BaseValidator } from './base.validator';
 /**
  * The Base Validator class is able to perform verificaitons
  */
@@ -14,6 +14,12 @@ export class BasePageValidator extends BaseValidator {
     async verifyLabel(elem: Locator, expectedText: string, errorMsg: string): Promise<void> {
         return this.validate(elem, expectedText, true, errorMsg);
     }
+
+    async verifyLabelContains(elem: Locator, expectedText: string, errorMsg: string): Promise<void> {
+      const actualText = (await elem.textContent()) || '';
+      this.assertTextContains(actualText, expectedText, errorMsg);
+
+  }
     
       async verifyInput(elem: Locator, expectedText: string, errorMsg: string): Promise<void> {
         return this.validate(elem, expectedText, false, errorMsg);
@@ -29,6 +35,7 @@ export class BasePageValidator extends BaseValidator {
           actualText = (await elem.textContent()) || '';
         }
         return this.assertTextEqual(actualText, expectedText, errorMsg);
-    }  
+    }
+
 
 }

@@ -1,6 +1,5 @@
-import { type Page } from '@playwright/test';
-import { PageContainer } from '../pages/container.for.pages';
-import { BasePageValidator } from './base.page.validator';
+import { PageContainer } from '../page-objects/page.container';
+import { BasePageValidator } from './base/base.page.validator';
  
 /**
  * The purpose of this class is to have a verifications to be wrapped by functions 

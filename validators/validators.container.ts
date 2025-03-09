@@ -1,5 +1,5 @@
 import { type Page } from '@playwright/test';
-import { PageContainer } from '../pages/container.for.pages.ts';
+import { PageContainer } from '../page-objects/page.container.ts';
 import { HomePageValidator } from './validator.home.page.ts';
 import { CartPopUpValidator } from './validator.cart.pop.up.ts';
 import { CartPageValidator } from './validator.cart.page.ts';
