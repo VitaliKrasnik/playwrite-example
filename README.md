@@ -1,7 +1,9 @@
 To install the project run command in terminal:
 ```npm install```
 
-To run tests using VS Code, you will need to install the Playwright extension VS Code marketplace.
+To run tests using VS Code, you will need to install the Playwright extension from the VS Code marketplace.
+Tests are located in the ```tests``` directory.
+
 
 ## Test Execution
 Run all tests:
@@ -41,14 +43,14 @@ Other notable configurations:
 
 ## Framework Overview:
 1. Page Objects: Page actions are encapsulated within dedicated page objects to promote modularity and maintainability.
-  -  Locators method in Pageobjects returns Playwright locators object that can be used within validator so you don't need to remember the locator name when writing the code, autocomplition is your friend.  
+  - The locator method within Page Objects returns Playwright locators for use in validators, enabling autocompletion and eliminating the need to recall locator names.  
 
 2. Page Container and Validator Container: These containers are implemented to minimize frequent page object initialization and ensure availability across all tests.
 
 3. TestBase is the custom fixture that initializes all page objects 
 
-Also a folder services can be added with API clients to improve test procondition. 
+A services folder containing API clients can be added to enhance test preconditions and test data set up.
 
-Tests are located in tests directory
+
 
 
