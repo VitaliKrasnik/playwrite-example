@@ -43,7 +43,7 @@ Other notable configurations:
 
 ## Framework Overview:
 1. Page Objects: Page actions are encapsulated within dedicated page objects to promote modularity and maintainability.
-  - The locator method within Page Objects returns Playwright locators for use in validators, enabling autocompletion and eliminating the need to recall locator names.  
+  - The locator method within Page Objects returns Playwright locators enabling autocompletion, eliminating the need to recall locator names, and for re-use in validators.  
 
 2. Page Container and Validator Container: These containers are implemented to minimize frequent page object initialization and ensure availability across all tests.
 
